@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         .reveal {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -95,12 +93,6 @@
                     2. **Market Expansion** - Entry into APAC markets
                     3. **Operational Excellence** - Cost optimization programs
                     4. **Innovation** - New product launches in Q1 2025
-                    
-                    <aside class="notes">
-                        Walk through each strategic initiative.
-                        Emphasize the digital transformation investment.
-                        Mention the projected ROI for each initiative.
-                    </aside>
                 </textarea>
             </section>
 
@@ -164,7 +156,7 @@ import matplotlib.pyplot as plt
 plt.figure(figsize=(12, 6))
 plt.plot(yoy_comparison.index, yoy_comparison.values, label='Actual')
 plt.plot(forecast.index, forecast.values, label='Forecast', linestyle='--')
-plt.title('Revenue Trend & Q1 2025 Forecast')
+plt.title('Revenue Trend and Q1 2025 Forecast')
 plt.legend()
                 </code></pre>
                 <p class="code-explanation fragment">
@@ -183,19 +175,22 @@ plt.legend()
                 <h2>Financial Metrics Calculation</h2>
                 <div style="text-align: left; padding: 0 50px;">
                     <h3 class="fragment">Return on Equity (ROE)</h3>
-                    <p class="fragment">
-                        \[ROE = \frac{\text{Net Income}}{\text{Shareholders' Equity}} = \frac{2.85B}{8.9B} = 32.0\%\]
-                    </p>
+                    <div class="fragment">
+                        <p>ROE = Net Income / Shareholders' Equity</p>
+                        <p>ROE = 2.85B / 8.9B = 32.0%</p>
+                    </div>
                     
                     <h3 class="fragment" style="margin-top: 40px;">Earnings Per Share (EPS)</h3>
-                    <p class="fragment">
-                        \[EPS = \frac{\text{Net Income} - \text{Preferred Dividends}}{\text{Weighted Average Shares Outstanding}}\]
-                    </p>
+                    <div class="fragment">
+                        <p>EPS = (Net Income - Preferred Dividends) / Weighted Average Shares</p>
+                        <p>EPS = 2.85B / 1.0B shares = $2.85</p>
+                    </div>
                     
                     <h3 class="fragment" style="margin-top: 40px;">Price-to-Earnings Ratio</h3>
-                    <p class="fragment">
-                        \[P/E = \frac{\text{Market Price per Share}}{\text{Earnings per Share}} = \frac{85.50}{2.85} = 30.0\]
-                    </p>
+                    <div class="fragment">
+                        <p>P/E = Market Price per Share / Earnings per Share</p>
+                        <p>P/E = $85.50 / $2.85 = 30.0</p>
+                    </div>
                 </div>
                 <aside class="notes">
                     Walk through each formula step by step.
@@ -208,18 +203,18 @@ plt.legend()
             <section>
                 <h2>Value at Risk (VaR) Analysis</h2>
                 <p>Portfolio risk assessment using 95% confidence interval:</p>
-                <div class="fragment">
-                    \[VaR_{95\%} = \mu - 1.645\sigma\]
+                <div class="fragment" style="margin-top: 30px;">
+                    <p><strong>VaR<sub>95%</sub> = μ - 1.645σ</strong></p>
                 </div>
                 <div class="fragment" style="margin-top: 30px;">
                     <p>Where:</p>
                     <ul style="text-align: left; display: inline-block;">
-                        <li>\(\mu\) = Expected portfolio return = 8.2%</li>
-                        <li>\(\sigma\) = Portfolio standard deviation = 12.5%</li>
+                        <li>μ = Expected portfolio return = 8.2%</li>
+                        <li>σ = Portfolio standard deviation = 12.5%</li>
                     </ul>
                 </div>
                 <div class="fragment" style="margin-top: 30px;">
-                    \[VaR_{95\%} = 8.2\% - 1.645(12.5\%) = -12.4\%\]
+                    <p><strong>VaR<sub>95%</sub> = 8.2% - 1.645(12.5%) = -12.4%</strong></p>
                 </div>
                 <p class="fragment" style="margin-top: 20px; color: #e74c3c;">
                     Maximum expected loss: <strong>$520M</strong> at 95% confidence level
@@ -239,8 +234,8 @@ import numpy as np
 from scipy import stats
 
 # Portfolio parameters
-returns = np.array([0.082, 0.095, 0.071, 0.088])  # Historical returns
-weights = np.array([0.40, 0.30, 0.20, 0.10])      # Asset allocation
+returns = np.array([0.082, 0.095, 0.071, 0.088])
+weights = np.array([0.40, 0.30, 0.20, 0.10])
 
 # Calculate portfolio statistics
 portfolio_return = np.dot(returns, weights)
@@ -263,6 +258,39 @@ print(f"95% CVaR: {cvar_95:.2%}")
                     Demonstrate the automated risk calculation system.
                     Highlight the real-time monitoring capabilities.
                     Mention the stress testing framework.
+                </aside>
+            </section>
+
+            <!-- Compound Interest Formula -->
+            <section>
+                <h2>Investment Growth Model</h2>
+                <div style="text-align: left; padding: 0 50px;">
+                    <h3 class="fragment">Compound Annual Growth Rate (CAGR)</h3>
+                    <div class="fragment" style="margin-top: 20px;">
+                        <p><strong>CAGR = (FV / PV)<sup>1/n</sup> - 1</strong></p>
+                        <p style="font-size: 0.9em; margin-top: 10px;">Where:</p>
+                        <ul style="font-size: 0.9em;">
+                            <li>FV = Final Value = $4.2B</li>
+                            <li>PV = Present Value = $2.1B (2020)</li>
+                            <li>n = Number of years = 4</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fragment" style="margin-top: 30px;">
+                        <p><strong>CAGR = (4.2 / 2.1)<sup>1/4</sup> - 1 = 18.9%</strong></p>
+                    </div>
+
+                    <h3 class="fragment" style="margin-top: 40px;">Future Value Projection</h3>
+                    <div class="fragment" style="margin-top: 20px;">
+                        <p><strong>FV = PV × (1 + r)<sup>n</sup></strong></p>
+                        <p style="margin-top: 10px;">2025 Projected Revenue:</p>
+                        <p><strong>FV = $4.2B × (1.189)<sup>1</sup> = $4.99B</strong></p>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Show how consistent growth compounds over time.
+                    Highlight the 18.9% CAGR achievement.
+                    Compare to industry CAGR of 12%.
                 </aside>
             </section>
 
