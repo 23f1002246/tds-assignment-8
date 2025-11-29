@@ -3,324 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="23f1002246@ds.study.iitm.ac.in">
-    <meta name="contact" content="23f1002246@ds.study.iitm.ac.in">
-    <title>Q4 2025 Earnings Report</title>
-    <!-- Email: 23f1002246@ds.study.iitm.ac.in -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai.min.css">
+    <title>Q4 2024 Earnings Report</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/monokai.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
         .reveal {
-            width: 100%;
-            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .reveal h1, .reveal h2, .reveal h3 {
-            text-transform: none;
+        .reveal h1, .reveal h2 {
+            color: #2c3e50;
         }
-        .reveal .slides {
-            text-align: left;
-        }
-        .reveal .slides section {
-            padding: 20px;
-            height: 100%;
-        }
-        .financial-highlight {
+        .metric-card {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            color: white;
+            padding: 30px;
             border-radius: 10px;
-            margin: 20px 0;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .metric-box {
-            display: inline-block;
-            padding: 15px 25px;
-            margin: 10px;
-            background: rgba(255, 255, 255, 0.1);
+        .metric-value {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .metric-label {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .positive {
+            color: #2ecc71;
+        }
+        .chart-container {
+            background: #f8f9fa;
+            padding: 20px;
             border-radius: 8px;
-            border-left: 4px solid #4CAF50;
+            margin: 20px 0;
         }
         .contact-info {
-            font-size: 0.8em;
-            color: #888;
+            font-size: 0.9em;
+            color: #7f8c8d;
             margin-top: 30px;
         }
-        .formula-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        .reveal pre {
-            width: 100%;
-            font-size: 0.5em;
-        }
-        .reveal code {
-            max-height: 400px;
+        .code-explanation {
+            text-align: left;
+            font-size: 0.8em;
+            color: #555;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Contact: 23f1002246@ds.study.iitm.ac.in -->
     <div class="reveal">
         <div class="slides">
+            
             <!-- Title Slide -->
             <section>
-                <h1>Q4 2025 Earnings Report</h1>
-                <h3>Financial Performance & Strategic Insights</h3>
-                <p style="margin-top: 50px;">
-                    <small>Technical Consultant</small><br>
-                    <small class="contact-info"><a href="mailto:23f1002246@ds.study.iitm.ac.in">23f1002246@ds.study.iitm.ac.in</a></small>
-                </p>
-                <p style="margin-top: 20px; font-size: 0.7em; color: #666;">
-                    Contact: 23f1002246@ds.study.iitm.ac.in
-                </p>
+                <h1>Q4 2024 Earnings Report</h1>
+                <h3>Financial Performance & Strategic Outlook</h3>
+                <p style="margin-top: 50px;">Prepared by: Financial Analytics Division</p>
+                <p class="contact-info">23f1002246@ds.study.iitm.ac.in</p>
+                <p style="font-size: 0.8em; color: #95a5a6; margin-top: 30px;">Press 'S' for speaker notes | 'O' for overview</p>
                 <aside class="notes">
-                    Welcome everyone to our Q4 2025 earnings presentation. Today we'll cover our financial performance, key metrics, and strategic initiatives.
+                    Welcome stakeholders to the Q4 2024 earnings presentation. 
+                    This quarter showed exceptional growth across all key metrics.
+                    Highlight the interactive features available in this presentation.
                 </aside>
             </section>
 
-            <!-- Executive Summary - Markdown Slide -->
+            <!-- Executive Summary (Markdown) -->
             <section data-markdown>
                 <textarea data-template>
-## Executive Summary
-
-**Presented by:** 23f1002246@ds.study.iitm.ac.in
-
-**Q4 2025 Highlights:**
-
-* Revenue growth of **23.5%** year-over-year
-* Operating margin improved to **34.2%**
-* Customer base expanded by **1.2M** new accounts
-* Successfully launched 3 new digital products
-* Enhanced cybersecurity infrastructure
-
-> "Our strategic investments in technology and customer experience continue to drive exceptional results."
+                    ## Executive Summary
+                    
+                    **Q4 2024 Performance Highlights**
+                    
+                    - Revenue increased **28.5%** YoY to $4.2B
+                    - Operating margin expanded to **32.1%**
+                    - EPS grew **35%** to $2.85
+                    - Customer base reached **12.5M** (+22% YoY)
+                    
+                    ---
+                    
+                    ## Strategic Initiatives
+                    
+                    **Key Focus Areas for 2025**
+                    
+                    1. **Digital Transformation** - AI-powered analytics platform
+                    2. **Market Expansion** - Entry into APAC markets
+                    3. **Operational Excellence** - Cost optimization programs
+                    4. **Innovation** - New product launches in Q1 2025
+                    
+                    <aside class="notes">
+                        Walk through each strategic initiative.
+                        Emphasize the digital transformation investment.
+                        Mention the projected ROI for each initiative.
+                    </aside>
                 </textarea>
-                <aside class="notes">
-                    This slide provides a high-level overview of our exceptional Q4 performance. Note the strong revenue growth and margin expansion.
-                </aside>
             </section>
 
             <!-- Financial Metrics with Fragments -->
             <section>
                 <h2>Key Financial Metrics</h2>
-                <div class="financial-highlight">
-                    <div class="metric-box fragment fade-up">
-                        <h3>$4.8B</h3>
-                        <p>Total Revenue</p>
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                    <div class="metric-card fragment fade-up" data-fragment-index="1">
+                        <div class="metric-label">Revenue</div>
+                        <div class="metric-value">$4.2B</div>
+                        <div class="positive">↑ 28.5%</div>
                     </div>
-                    <div class="metric-box fragment fade-up">
-                        <h3>$1.64B</h3>
-                        <p>Net Income</p>
-                    </div>
-                    <div class="metric-box fragment fade-up">
-                        <h3>$5.23</h3>
-                        <p>Earnings Per Share</p>
-                    </div>
-                    <div class="metric-box fragment fade-up">
-                        <h3>34.2%</h3>
-                        <p>Operating Margin</p>
+                    <div class="metric-card fragment fade-up" data-fragment-index="2">
+                        <div class="metric-label">Operating Income</div>
+                        <div class="metric-value">$1.35B</div>
+                        <div class="positive">↑ 32.1%</div>
                     </div>
                 </div>
-                <p class="fragment fade-in" style="margin-top: 30px; font-size: 0.9em;">
-                    <strong>All metrics exceed analyst expectations</strong>
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                    <div class="metric-card fragment fade-up" data-fragment-index="3">
+                        <div class="metric-label">EPS</div>
+                        <div class="metric-value">$2.85</div>
+                        <div class="positive">↑ 35%</div>
+                    </div>
+                    <div class="metric-card fragment fade-up" data-fragment-index="4">
+                        <div class="metric-label">Free Cash Flow</div>
+                        <div class="metric-value">$980M</div>
+                        <div class="positive">↑ 41%</div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Reveal metrics one by one to build impact.
+                    Pause after each to let numbers sink in.
+                    Highlight that all metrics exceeded guidance.
+                </aside>
+            </section>
+
+            <!-- Revenue Analysis with Code -->
+            <section>
+                <h2>Revenue Analysis Pipeline</h2>
+                <pre><code class="python" data-line-numbers="1-3|5-7|9-11|13-15">
+# Q4 2024 Revenue Analysis
+import pandas as pd
+import numpy as np
+
+# Load quarterly data
+df = pd.read_csv('q4_revenue.csv')
+revenue_by_segment = df.groupby('segment')['revenue'].sum()
+
+# Calculate growth rates
+q4_growth = (df['q4_2024'] / df['q4_2023'] - 1) * 100
+yoy_comparison = df.pivot_table(values='revenue', index='quarter', aggfunc='sum')
+
+# Generate forecasts using exponential smoothing
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
+model = ExponentialSmoothing(yoy_comparison, seasonal_periods=4)
+forecast = model.fit().forecast(steps=4)
+
+# Visualization
+import matplotlib.pyplot as plt
+plt.figure(figsize=(12, 6))
+plt.plot(yoy_comparison.index, yoy_comparison.values, label='Actual')
+plt.plot(forecast.index, forecast.values, label='Forecast', linestyle='--')
+plt.title('Revenue Trend & Q1 2025 Forecast')
+plt.legend()
+                </code></pre>
+                <p class="code-explanation fragment">
+                    This pipeline processes quarterly revenue data, calculates growth metrics, 
+                    and generates forecasts using time series analysis.
                 </p>
                 <aside class="notes">
-                    Walk through each metric slowly. Emphasize that we beat analyst expectations across all categories.
+                    Explain the three-stage analysis process.
+                    Highlight the 41% forecast accuracy improvement.
+                    Mention the automated reporting system.
                 </aside>
             </section>
 
             <!-- Financial Formulas -->
             <section>
-                <h2>Valuation Metrics</h2>
-                <div class="formula-box">
-                    <h3>Return on Equity (ROE)</h3>
-                    <p style="font-size: 1.2em; font-family: monospace;">ROE = (Net Income / Shareholder Equity) × 100</p>
-                    <p class="fragment">Current ROE: <strong>18.7%</strong></p>
-                </div>
-                <div class="formula-box fragment">
-                    <h3>Price-to-Earnings Ratio</h3>
-                    <p style="font-size: 1.2em; font-family: monospace;">P/E = Market Price per Share / Earnings per Share</p>
-                    <p class="fragment">Current P/E: <strong>24.3</strong></p>
-                </div>
-                <div class="formula-box fragment">
-                    <h3>Compound Annual Growth Rate</h3>
-                    <p style="font-size: 1.2em; font-family: monospace;">CAGR = (Ending Value / Beginning Value)^(1/n) - 1</p>
-                    <p class="fragment">5-Year CAGR: <strong>21.4%</strong></p>
+                <h2>Financial Metrics Calculation</h2>
+                <div style="text-align: left; padding: 0 50px;">
+                    <h3 class="fragment">Return on Equity (ROE)</h3>
+                    <p class="fragment">
+                        \[ROE = \frac{\text{Net Income}}{\text{Shareholders' Equity}} = \frac{2.85B}{8.9B} = 32.0\%\]
+                    </p>
+                    
+                    <h3 class="fragment" style="margin-top: 40px;">Earnings Per Share (EPS)</h3>
+                    <p class="fragment">
+                        \[EPS = \frac{\text{Net Income} - \text{Preferred Dividends}}{\text{Weighted Average Shares Outstanding}}\]
+                    </p>
+                    
+                    <h3 class="fragment" style="margin-top: 40px;">Price-to-Earnings Ratio</h3>
+                    <p class="fragment">
+                        \[P/E = \frac{\text{Market Price per Share}}{\text{Earnings per Share}} = \frac{85.50}{2.85} = 30.0\]
+                    </p>
                 </div>
                 <aside class="notes">
-                    These formulas demonstrate our strong financial health. ROE above 15% is excellent.
+                    Walk through each formula step by step.
+                    Compare ROE to industry average of 25%.
+                    Explain P/E ratio relative to sector median of 28.
                 </aside>
             </section>
 
-            <!-- Code Sample - Risk Management Algorithm -->
+            <!-- Risk Analysis -->
             <section>
-                <h2>Risk Management Enhancement</h2>
-                <p>New Portfolio Risk Assessment Algorithm</p>
-                <pre><code class="language-python" data-trim>
+                <h2>Value at Risk (VaR) Analysis</h2>
+                <p>Portfolio risk assessment using 95% confidence interval:</p>
+                <div class="fragment">
+                    \[VaR_{95\%} = \mu - 1.645\sigma\]
+                </div>
+                <div class="fragment" style="margin-top: 30px;">
+                    <p>Where:</p>
+                    <ul style="text-align: left; display: inline-block;">
+                        <li>\(\mu\) = Expected portfolio return = 8.2%</li>
+                        <li>\(\sigma\) = Portfolio standard deviation = 12.5%</li>
+                    </ul>
+                </div>
+                <div class="fragment" style="margin-top: 30px;">
+                    \[VaR_{95\%} = 8.2\% - 1.645(12.5\%) = -12.4\%\]
+                </div>
+                <p class="fragment" style="margin-top: 20px; color: #e74c3c;">
+                    Maximum expected loss: <strong>$520M</strong> at 95% confidence level
+                </p>
+                <aside class="notes">
+                    Explain VaR methodology and assumptions.
+                    Compare to Q3 2024 VaR of $580M (improved).
+                    Discuss hedging strategies implemented.
+                </aside>
+            </section>
+
+            <!-- Python Risk Calculation -->
+            <section>
+                <h2>Risk Calculation Implementation</h2>
+                <pre><code class="python" data-line-numbers="1-2|4-6|8-12|14-18">
 import numpy as np
-import pandas as pd
-from scipy.stats import norm
+from scipy import stats
 
-def calculate_var(portfolio_returns, confidence_level=0.95):
-    """Calculate Value at Risk (VaR) for portfolio"""
-    mean_return = np.mean(portfolio_returns)
-    std_return = np.std(portfolio_returns)
-    
-    # Parametric VaR calculation
-    z_score = norm.ppf(1 - confidence_level)
-    var = mean_return + z_score * std_return
-    
-    # Expected Shortfall (CVaR)
-    cvar = mean_return - std_return * norm.pdf(z_score) / (1 - confidence_level)
-    
-    return {
-        'VaR': var,
-        'CVaR': cvar,
-        'confidence': confidence_level
-    }
+# Portfolio parameters
+returns = np.array([0.082, 0.095, 0.071, 0.088])  # Historical returns
+weights = np.array([0.40, 0.30, 0.20, 0.10])      # Asset allocation
 
-# Production deployment reduced risk calculation time by 67%
+# Calculate portfolio statistics
+portfolio_return = np.dot(returns, weights)
+portfolio_std = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights)))
+confidence_level = 0.95
+z_score = stats.norm.ppf(1 - confidence_level)
+
+# Compute VaR and CVaR
+var_95 = portfolio_return + z_score * portfolio_std
+cvar_95 = portfolio_return + portfolio_std * stats.norm.pdf(z_score) / (1 - confidence_level)
+
+print(f"95% VaR: {var_95:.2%}")
+print(f"95% CVaR: {cvar_95:.2%}")
                 </code></pre>
+                <p class="fragment" style="font-size: 0.9em; margin-top: 20px;">
+                    Our risk management system processes <strong>2.5M</strong> transactions daily 
+                    to maintain real-time portfolio optimization.
+                </p>
                 <aside class="notes">
-                    This is our new risk management algorithm deployed in Q4. Highlight the 67% improvement in calculation speed.
+                    Demonstrate the automated risk calculation system.
+                    Highlight the real-time monitoring capabilities.
+                    Mention the stress testing framework.
                 </aside>
             </section>
 
-            <!-- Code Sample - API Integration -->
+            <!-- Segment Performance -->
             <section>
-                <h2>Digital Banking API</h2>
-                <p>New RESTful API for real-time transactions</p>
-                <pre><code class="language-javascript" data-trim>
-// Transaction processing endpoint
-const express = require('express');
-
-app.post('/api/v2/transactions', async (req, res) => {
-    const { accountId, amount, type, metadata } = req.body;
-    
-    // Real-time fraud detection
-    const fraudScore = await fraudDetection.analyze(accountId, amount);
-    
-    if (fraudScore > 0.85) {
-        return res.status(403).json({ error: 'Transaction flagged' });
-    }
-    
-    // Process transaction with 99.99% uptime
-    const result = await transactionService.process({
-        accountId, amount, type, metadata
-    });
-    
-    res.json({ success: true, transactionId: result.id });
-});
-
-// Handling 500K+ transactions per day with <100ms latency
-                </code></pre>
+                <h2>Segment Performance Breakdown</h2>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 20px;">
+                    <div class="fragment fade-right">
+                        <h3>Retail Banking</h3>
+                        <p style="font-size: 2em; color: #3498db;">$1.8B</p>
+                        <p class="positive">↑ 24% YoY</p>
+                    </div>
+                    <div class="fragment fade-left">
+                        <h3>Investment Services</h3>
+                        <p style="font-size: 2em; color: #9b59b6;">$1.5B</p>
+                        <p class="positive">↑ 35% YoY</p>
+                    </div>
+                    <div class="fragment fade-right">
+                        <h3>Corporate Banking</h3>
+                        <p style="font-size: 2em; color: #e67e22;">$0.7B</p>
+                        <p class="positive">↑ 18% YoY</p>
+                    </div>
+                    <div class="fragment fade-left">
+                        <h3>Digital Services</h3>
+                        <p style="font-size: 2em; color: #1abc9c;">$0.2B</p>
+                        <p class="positive">↑ 68% YoY</p>
+                    </div>
+                </div>
                 <aside class="notes">
-                    Our new API handles over 500,000 transactions daily with sub-100ms latency.
+                    Investment Services led growth this quarter.
+                    Digital Services showed strongest growth rate.
+                    Retail Banking remains largest contributor.
                 </aside>
             </section>
 
-            <!-- Strategic Initiatives with Fragments -->
+            <!-- 2025 Guidance -->
             <section>
-                <h2>2026 Strategic Initiatives</h2>
-                <ul style="font-size: 0.9em;">
-                    <li class="fragment fade-right">
-                        <strong>AI-Powered Advisory Platform</strong>
-                        <br><span style="color: #888;">Launch personalized investment recommendations using machine learning</span>
-                    </li>
-                    <li class="fragment fade-right">
-                        <strong>Blockchain Settlement System</strong>
-                        <br><span style="color: #888;">Reduce settlement time from T+2 to real-time for institutional clients</span>
-                    </li>
-                    <li class="fragment fade-right">
-                        <strong>Carbon-Neutral Operations</strong>
-                        <br><span style="color: #888;">Achieve net-zero emissions across all data centers by Q3 2026</span>
-                    </li>
-                    <li class="fragment fade-right">
-                        <strong>Global Expansion</strong>
-                        <br><span style="color: #888;">Enter 5 new markets in Southeast Asia and EMEA regions</span>
-                    </li>
-                </ul>
+                <h2>2025 Financial Guidance</h2>
+                <div style="text-align: left; padding: 0 100px;">
+                    <h3 class="fragment">Full Year 2025 Outlook</h3>
+                    <ul>
+                        <li class="fragment"><strong>Revenue:</strong> $17.5B - $18.2B (20-25% growth)</li>
+                        <li class="fragment"><strong>Operating Margin:</strong> 31-33%</li>
+                        <li class="fragment"><strong>EPS:</strong> $11.20 - $11.80</li>
+                        <li class="fragment"><strong>Capital Expenditure:</strong> $1.2B (7% of revenue)</li>
+                    </ul>
+                    
+                    <h3 class="fragment" style="margin-top: 40px;">Key Assumptions</h3>
+                    <ul>
+                        <li class="fragment">Moderate economic growth (GDP +2.5%)</li>
+                        <li class="fragment">Stable interest rate environment</li>
+                        <li class="fragment">Continued digital adoption trends</li>
+                    </ul>
+                </div>
                 <aside class="notes">
-                    These initiatives will position us for continued growth. The AI platform has completed beta testing with excellent user feedback.
+                    Guidance reflects conservative estimates.
+                    Economic assumptions based on Fed projections.
+                    Digital investments will drive margin expansion.
                 </aside>
             </section>
 
             <!-- Closing Slide -->
             <section>
-                <h2>Q&A</h2>
-                <div style="margin-top: 60px;">
-                    <p style="font-size: 1.2em;">Thank you for your continued support</p>
-                    <p style="margin-top: 40px; font-size: 0.9em; color: #888;">
-                        For additional information, please contact:<br>
-                        <strong><a href="mailto:23f1002246@ds.study.iitm.ac.in" style="color: #4CAF50;">23f1002246@ds.study.iitm.ac.in</a></strong>
-                    </p>
-                    <p style="margin-top: 20px; font-size: 0.8em; color: #666;">
-                        Email: 23f1002246@ds.study.iitm.ac.in
+                <h1>Thank You</h1>
+                <h3>Questions & Discussion</h3>
+                <div style="margin-top: 50px;">
+                    <p><strong>Investor Relations Contact</strong></p>
+                    <p>23f1002246@ds.study.iitm.ac.in</p>
+                    <p style="font-size: 0.9em; color: #7f8c8d; margin-top: 30px;">
+                        Full report available at: investor.company.com/q4-2024
                     </p>
                 </div>
+                <div style="margin-top: 50px; font-size: 0.8em; color: #95a5a6;">
+                    <p>Next Earnings Call: April 25, 2025</p>
+                </div>
                 <aside class="notes">
-                    Open the floor for questions. Be prepared to discuss details on the new digital products and expansion strategy.
+                    Open floor for questions.
+                    Emphasize key takeaways: strong growth, margin expansion.
+                    Reiterate confidence in 2025 guidance.
+                    Thank the stakeholders for their support.
                 </aside>
             </section>
+
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
     <script>
-        // Wait for DOM to be fully loaded
-        window.addEventListener('load', function() {
-            try {
-                Reveal.initialize({
-                    hash: false,
-                    transition: 'slide',
-                    transitionSpeed: 'default',
-                    backgroundTransition: 'fade',
-                    center: false,
-                    embedded: true,
-                    controls: true,
-                    progress: true,
-                    slideNumber: true,
-                    keyboard: true,
-                    overview: true,
-                    touch: true,
-                    loop: false,
-                    rtl: false,
-                    shuffle: false,
-                    fragments: true,
-                    fragmentInURL: false,
-                    help: true,
-                    showNotes: false,
-                    autoPlayMedia: null,
-                    preloadIframes: null,
-                    autoAnimate: true,
-                    width: 960,
-                    height: 700,
-                    margin: 0.04,
-                    minScale: 0.2,
-                    maxScale: 2.0,
-                    plugins: [
-                        RevealMarkdown,
-                        RevealHighlight,
-                        RevealNotes
-                    ]
-                });
-                
-                console.log('RevealJS initialized successfully');
-            } catch(e) {
-                console.error('Error initializing Reveal:', e);
-            }
+        Reveal.initialize({
+            width: 1280,
+            height: 720,
+            margin: 0.04,
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
         });
     </script>
 </body>
