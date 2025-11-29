@@ -141,14 +141,9 @@ architecture:
 
 ---
 
-<!-- 
-_class: background-slide
-_backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/background.jpg')"
--->
-
 # Performance Metrics
 
-![Background](./images/background.jpg)
+![bg](./images/background.jpg)
 
 ## Real-Time System Analytics
 
@@ -160,6 +155,8 @@ _backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(
 ---
 
 # Authentication Flow
+
+![bg cover](./images/background.jpg)
 
 ## OAuth 2.0 Implementation
 
