@@ -143,7 +143,7 @@ architecture:
 
 <!-- 
 _class: background-slide
-_backgroundImage: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920')
+_backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/background.jpg')"
 -->
 
 # Performance Metrics
