@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 2025 Earnings Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai.min.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .reveal {
+            width: 100%;
+            height: 100%;
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none;
+        }
+        .reveal .slides {
+            text-align: left;
+        }
+        .reveal .slides section {
+            padding: 20px;
+            height: 100%;
+        }
+        .financial-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .metric-box {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+        .contact-info {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 30px;
+        }
+        .formula-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .reveal pre {
+            width: 100%;
+            font-size: 0.5em;
+        }
+        .reveal code {
+            max-height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Title Slide -->
+            <section>
+                <h1>Q4 2025 Earnings Report</h1>
+                <h3>Financial Performance & Strategic Insights</h3>
+                <p style="margin-top: 50px;">
+                    <small>Technical Consultant</small><br>
+                    <small class="contact-info">23f1002246@ds.study.iitm.ac.in</small>
+                </p>
+                <aside class="notes">
+                    Welcome everyone to our Q4 2025 earnings presentation. Today we'll cover our financial performance, key metrics, and strategic initiatives.
+                </aside>
+            </section>
+
+            <!-- Executive Summary - Markdown Slide -->
+            <section data-markdown>
+                <textarea data-template>
+## Executive Summary
+
+**Q4 2025 Highlights:**
+
+* Revenue growth of **23.5%** year-over-year
+* Operating margin improved to **34.2%**
+* Customer base expanded by **1.2M** new accounts
+* Successfully launched 3 new digital products
+* Enhanced cybersecurity infrastructure
+
+> "Our strategic investments in technology and customer experience continue to drive exceptional results."
+                </textarea>
+                <aside class="notes">
+                    This slide provides a high-level overview of our exceptional Q4 performance. Note the strong revenue growth and margin expansion.
+                </aside>
+            </section>
+
+            <!-- Financial Metrics with Fragments -->
+            <section>
+                <h2>Key Financial Metrics</h2>
+                <div class="financial-highlight">
+                    <div class="metric-box fragment fade-up">
+                        <h3>$4.8B</h3>
+                        <p>Total Revenue</p>
+                    </div>
+                    <div class="metric-box fragment fade-up">
+                        <h3>$1.64B</h3>
+                        <p>Net Income</p>
+                    </div>
+                    <div class="metric-box fragment fade-up">
+                        <h3>$5.23</h3>
+                        <p>Earnings Per Share</p>
+                    </div>
+                    <div class="metric-box fragment fade-up">
+                        <h3>34.2%</h3>
+                        <p>Operating Margin</p>
+                    </div>
+                </div>
+                <p class="fragment fade-in" style="margin-top: 30px; font-size: 0.9em;">
+                    <strong>All metrics exceed analyst expectations</strong>
+                </p>
+                <aside class="notes">
+                    Walk through each metric slowly. Emphasize that we beat analyst expectations across all categories.
+                </aside>
+            </section>
+
+            <!-- Financial Formulas -->
+            <section>
+                <h2>Valuation Metrics</h2>
+                <div class="formula-box">
+                    <h3>Return on Equity (ROE)</h3>
+                    <p style="font-size: 1.2em; font-family: monospace;">ROE = (Net Income / Shareholder Equity) × 100</p>
+                    <p class="fragment">Current ROE: <strong>18.7%</strong></p>
+                </div>
+                <div class="formula-box fragment">
+                    <h3>Price-to-Earnings Ratio</h3>
+                    <p style="font-size: 1.2em; font-family: monospace;">P/E = Market Price per Share / Earnings per Share</p>
+                    <p class="fragment">Current P/E: <strong>24.3</strong></p>
+                </div>
+                <div class="formula-box fragment">
+                    <h3>Compound Annual Growth Rate</h3>
+                    <p style="font-size: 1.2em; font-family: monospace;">CAGR = (Ending Value / Beginning Value)^(1/n) - 1</p>
+                    <p class="fragment">5-Year CAGR: <strong>21.4%</strong></p>
+                </div>
+                <aside class="notes">
+                    These formulas demonstrate our strong financial health. ROE above 15% is excellent.
+                </aside>
+            </section>
+
+            <!-- Code Sample - Risk Management Algorithm -->
+            <section>
+                <h2>Risk Management Enhancement</h2>
+                <p>New Portfolio Risk Assessment Algorithm</p>
+                <pre><code class="python" data-trim>
+import numpy as np
+import pandas as pd
+from scipy.stats import norm
+
+def calculate_var(portfolio_returns, confidence_level=0.95):
+    """Calculate Value at Risk (VaR) for portfolio"""
+    mean_return = np.mean(portfolio_returns)
+    std_return = np.std(portfolio_returns)
+    
+    # Parametric VaR calculation
+    z_score = norm.ppf(1 - confidence_level)
+    var = mean_return + z_score * std_return
+    
+    # Expected Shortfall (CVaR)
+    cvar = mean_return - std_return * norm.pdf(z_score) / (1 - confidence_level)
+    
+    return {
+        'VaR': var,
+        'CVaR': cvar,
+        'confidence': confidence_level
+    }
+
+# Production deployment reduced risk calculation time by 67%
+                </code></pre>
+                <aside class="notes">
+                    This is our new risk management algorithm deployed in Q4. Highlight the 67% improvement in calculation speed.
+                </aside>
+            </section>
+
+            <!-- Code Sample - API Integration -->
+            <section>
+                <h2>Digital Banking API</h2>
+                <p>New RESTful API for real-time transactions</p>
+                <pre><code class="javascript" data-trim>
+// Transaction processing endpoint
+const express = require('express');
+
+app.post('/api/v2/transactions', async (req, res) => {
+    const { accountId, amount, type, metadata } = req.body;
+    
+    // Real-time fraud detection
+    const fraudScore = await fraudDetection.analyze(accountId, amount);
+    
+    if (fraudScore > 0.85) {
+        return res.status(403).json({ error: 'Transaction flagged' });
+    }
+    
+    // Process transaction with 99.99% uptime
+    const result = await transactionService.process({
+        accountId, amount, type, metadata
+    });
+    
+    res.json({ success: true, transactionId: result.id });
+});
+
+// Handling 500K+ transactions per day with <100ms latency
+                </code></pre>
+                <aside class="notes">
+                    Our new API handles over 500,000 transactions daily with sub-100ms latency.
+                </aside>
+            </section>
+
+            <!-- Strategic Initiatives with Fragments -->
+            <section>
+                <h2>2026 Strategic Initiatives</h2>
+                <ul style="font-size: 0.9em;">
+                    <li class="fragment fade-right">
+                        <strong>AI-Powered Advisory Platform</strong>
+                        <br><span style="color: #888;">Launch personalized investment recommendations using machine learning</span>
+                    </li>
+                    <li class="fragment fade-right">
+                        <strong>Blockchain Settlement System</strong>
+                        <br><span style="color: #888;">Reduce settlement time from T+2 to real-time for institutional clients</span>
+                    </li>
+                    <li class="fragment fade-right">
+                        <strong>Carbon-Neutral Operations</strong>
+                        <br><span style="color: #888;">Achieve net-zero emissions across all data centers by Q3 2026</span>
+                    </li>
+                    <li class="fragment fade-right">
+                        <strong>Global Expansion</strong>
+                        <br><span style="color: #888;">Enter 5 new markets in Southeast Asia and EMEA regions</span>
+                    </li>
+                </ul>
+                <aside class="notes">
+                    These initiatives will position us for continued growth. The AI platform has completed beta testing with excellent user feedback.
+                </aside>
+            </section>
+
+            <!-- Closing Slide -->
+            <section>
+                <h2>Q&A</h2>
+                <div style="margin-top: 60px;">
+                    <p style="font-size: 1.2em;">Thank you for your continued support</p>
+                    <p style="margin-top: 40px; font-size: 0.9em; color: #888;">
+                        For additional information, please contact:<br>
+                        <strong>23f1002246@ds.study.iitm.ac.in</strong>
+                    </p>
+                </div>
+                <aside class="notes">
+                    Open the floor for questions. Be prepared to discuss details on the new digital products and expansion strategy.
+                </aside>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/notes/notes.min.js"></script>
+    
+    <script>
+        // Wait for DOM to be fully loaded
+        window.addEventListener('load', function() {
+            try {
+                Reveal.initialize({
+                    hash: false,
+                    transition: 'slide',
+                    transitionSpeed: 'default',
+                    backgroundTransition: 'fade',
+                    center: false,
+                    embedded: true,
+                    controls: true,
+                    progress: true,
+                    slideNumber: true,
+                    keyboard: true,
+                    overview: true,
+                    touch: true,
+                    loop: false,
+                    rtl: false,
+                    shuffle: false,
+                    fragments: true,
+                    fragmentInURL: false,
+                    help: true,
+                    showNotes: false,
+                    autoPlayMedia: null,
+                    preloadIframes: null,
+                    autoAnimate: true,
+                    width: 960,
+                    height: 700,
+                    margin: 0.04,
+                    minScale: 0.2,
+                    maxScale: 2.0,
+                    plugins: [
+                        RevealMarkdown,
+                        RevealHighlight,
+                        RevealNotes
+                    ]
+                });
+                
+                console.log('RevealJS initialized successfully');
+            } catch(e) {
+                console.error('Error initializing Reveal:', e);
+            }
+        });
+    </script>
+</body>
+</html>
