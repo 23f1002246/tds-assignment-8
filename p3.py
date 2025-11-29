@@ -1,47 +1,31 @@
 import React, { useState, useMemo } from 'react';
 import { Slider } from '@/components/ui/slider';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Line, LineChart } from 'recharts';
 
-// Email: 23f1002246@ds.study.iitm.ac.in
-
-const InteractiveNotebook = () => {
-  // Cell 1: Interactive slider widget for sample size
-  // This controls how many data points we generate
+const MarimoNotebook = () => {
+  // Cell 1: Interactive slider widget
   const [sampleSize, setSampleSize] = useState(50);
   
-  // Cell 2: Generate synthetic dataset based on sample size
-  // Data flow: sampleSize -> rawData
-  // This cell depends on the slider value from Cell 1
+  // Cell 2: Generate data (depends on sampleSize)
   const rawData = useMemo(() => {
     const data = [];
     for (let i = 0; i < sampleSize; i++) {
       const x = (i / sampleSize) * 10;
-      // y = 2x + 3 + noise (linear relationship with random variation)
       const y = 2 * x + 3 + (Math.random() - 0.5) * 2;
-      data.push({ 
-        x: parseFloat(x.toFixed(2)), 
-        y: parseFloat(y.toFixed(2)) 
-      });
+      data.push({ x: parseFloat(x.toFixed(2)), y: parseFloat(y.toFixed(2)) });
     }
     return data;
   }, [sampleSize]);
   
-  // Cell 3: Calculate statistical measures from the dataset
-  // Data flow: rawData -> statistics
-  // This cell depends on the generated data from Cell 2
+  // Cell 3: Calculate statistics (depends on rawData)
   const statistics = useMemo(() => {
     const xValues = rawData.map(d => d.x);
     const yValues = rawData.map(d => d.y);
-    
     const meanX = xValues.reduce((a, b) => a + b, 0) / rawData.length;
     const meanY = yValues.reduce((a, b) => a + b, 0) / rawData.length;
     
-    // Calculate correlation coefficient
-    let numerator = 0;
-    let denomX = 0;
-    let denomY = 0;
-    
+    let numerator = 0, denomX = 0, denomY = 0;
     for (let i = 0; i < rawData.length; i++) {
       const dx = xValues[i] - meanX;
       const dy = yValues[i] - meanY;
@@ -49,7 +33,6 @@ const InteractiveNotebook = () => {
       denomX += dx * dx;
       denomY += dy * dy;
     }
-    
     const correlation = numerator / Math.sqrt(denomX * denomY);
     
     return {
@@ -61,55 +44,54 @@ const InteractiveNotebook = () => {
     };
   }, [rawData]);
 
-  // Cell 4: Dynamic markdown content based on state
-  // Data flow: sampleSize, statistics -> dynamicContent
-  const dynamicContent = useMemo(() => {
+  // Cell 4: Dynamic markdown (depends on sampleSize and statistics)
+  const analysisText = useMemo(() => {
     const corr = parseFloat(statistics.correlation);
+    let sizeStatus, advice, corrStrength;
     
-    let sizeCategory, sizeAdvice;
     if (sampleSize < 50) {
-      sizeCategory = '⚠️ Small Sample Analysis';
-      sizeAdvice = 'Sample size is relatively small. Consider increasing to at least 50 points for more reliable statistical inference.';
+      sizeStatus = '⚠️ Small Sample';
+      advice = 'Sample size is small. Consider n ≥ 50 for reliable inference.';
     } else if (sampleSize < 100) {
-      sizeCategory = '✓ Medium Sample Analysis';
-      sizeAdvice = 'Sample size is adequate for basic statistical analysis.';
+      sizeStatus = '✅ Medium Sample';
+      advice = 'Sample size is adequate for basic analysis.';
     } else {
-      sizeCategory = '✓ Large Sample Analysis';
-      sizeAdvice = 'Sample size is robust and suitable for reliable statistical inference.';
+      sizeStatus = '✅ Large Sample';
+      advice = 'Sample size is robust for reliable inference.';
     }
     
-    let corrStrength;
     if (corr > 0.9) corrStrength = 'very strong';
     else if (corr > 0.7) corrStrength = 'strong';
     else if (corr > 0.5) corrStrength = 'moderate';
     else corrStrength = 'weak';
     
-    return { sizeCategory, sizeAdvice, corrStrength };
+    return { sizeStatus, advice, corrStrength };
   }, [sampleSize, statistics]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-6 space-y-6 bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen">
+    <div className="w-full max-w-6xl mx-auto p-6 space-y-6 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 min-h-screen">
+      {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-slate-800 mb-2">
-          Interactive Data Analysis Notebook
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
+          Interactive Marimo Notebook
         </h1>
-        <p className="text-slate-600">Demonstrating variable dependencies and reactive computation</p>
-        <p className="text-sm text-slate-500 mt-2">Email: 23f1002246@ds.study.iitm.ac.in</p>
+        <p className="text-slate-600 text-lg">Reactive Data Analysis with Cell Dependencies</p>
+        <p className="text-sm text-slate-500 mt-2 font-mono">Email: 23f1002246@ds.study.iitm.ac.in</p>
       </div>
 
-      {/* Cell 1: Interactive Slider Widget */}
-      <Card className="border-2 border-blue-200 shadow-lg">
-        <CardHeader className="bg-blue-50">
+      {/* Cell 1: Interactive Slider */}
+      <Card className="border-2 border-purple-300 shadow-xl">
+        <CardHeader className="bg-gradient-to-r from-purple-100 to-purple-50">
           <CardTitle className="flex items-center gap-2">
-            <span className="bg-blue-500 text-white px-3 py-1 rounded text-sm font-mono">Cell 1</span>
-            Interactive Slider Widget
+            <span className="bg-purple-600 text-white px-3 py-1 rounded font-mono text-sm">Cell 1</span>
+            <span className="text-purple-900">Interactive Slider Widget</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <label className="text-lg font-medium text-slate-700">
-                Sample Size: <span className="text-blue-600 font-bold text-2xl">{sampleSize}</span>
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-lg font-semibold text-slate-700">
+                Sample Size: <span className="text-purple-600 text-3xl font-bold">{sampleSize}</span>
               </label>
             </div>
             <Slider
@@ -120,220 +102,207 @@ const InteractiveNotebook = () => {
               step={10}
               className="w-full"
             />
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
+            <div className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
               <p className="text-sm text-slate-700">
-                <strong>📍 Variable:</strong> <code className="bg-slate-200 px-2 py-1 rounded font-mono">sampleSize</code>
+                <span className="font-mono bg-purple-200 px-2 py-1 rounded">sample_size</span> = {sampleSize}
               </p>
               <p className="text-sm text-slate-600 mt-2">
-                💡 This slider controls the number of data points generated. Changes here cascade to all dependent cells below.
+                💡 Drag the slider to update all dependent cells reactively
               </p>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Cell 2: Data Visualization */}
-      <Card className="border-2 border-green-200 shadow-lg">
-        <CardHeader className="bg-green-50">
+      {/* Cell 2: Data Table Preview */}
+      <Card className="border-2 border-blue-300 shadow-xl">
+        <CardHeader className="bg-gradient-to-r from-blue-100 to-blue-50">
           <CardTitle className="flex items-center gap-2">
-            <span className="bg-green-500 text-white px-3 py-1 rounded text-sm font-mono">Cell 2</span>
-            Scatter Plot Visualization
+            <span className="bg-blue-600 text-white px-3 py-1 rounded font-mono text-sm">Cell 2</span>
+            <span className="text-blue-900">Generated Dataset</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-6">
+          <div className="bg-white rounded-lg border border-blue-200 overflow-hidden mb-4">
+            <table className="w-full text-sm">
+              <thead className="bg-blue-50">
+                <tr>
+                  <th className="px-4 py-2 text-left font-semibold">Index</th>
+                  <th className="px-4 py-2 text-left font-semibold">X</th>
+                  <th className="px-4 py-2 text-left font-semibold">Y</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rawData.slice(0, 5).map((row, idx) => (
+                  <tr key={idx} className="border-t border-blue-100">
+                    <td className="px-4 py-2 text-slate-600">{idx}</td>
+                    <td className="px-4 py-2 font-mono">{row.x}</td>
+                    <td className="px-4 py-2 font-mono">{row.y}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="bg-blue-50 px-4 py-2 text-xs text-slate-600 border-t border-blue-200">
+              Showing 5 of {sampleSize} rows
+            </div>
+          </div>
+          <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+            <p className="text-sm text-slate-700">
+              <span className="font-mono bg-blue-200 px-2 py-1 rounded">raw_data</span> = DataFrame with {sampleSize} rows
+            </p>
+            <p className="text-sm text-slate-600 mt-2">
+              <strong>Dependencies:</strong> <span className="font-mono bg-purple-200 px-2 py-1 rounded">sample_size</span> from Cell 1
+            </p>
+            <p className="text-sm text-slate-600 mt-1">
+              <strong>Model:</strong> y = 2x + 3 + noise
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Cell 3: Statistics */}
+      <Card className="border-2 border-green-300 shadow-xl">
+        <CardHeader className="bg-gradient-to-r from-green-100 to-green-50">
+          <CardTitle className="flex items-center gap-2">
+            <span className="bg-green-600 text-white px-3 py-1 rounded font-mono text-sm">Cell 3</span>
+            <span className="text-green-900">Statistical Summary</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pt-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+            {Object.entries(statistics).map(([key, value]) => (
+              <div key={key} className="bg-gradient-to-br from-green-100 to-green-50 p-4 rounded-lg border-2 border-green-200">
+                <p className="text-xs text-slate-600 mb-1 uppercase tracking-wide">{key}</p>
+                <p className="text-2xl font-bold text-green-700">{value}</p>
+              </div>
+            ))}
+            <div className="bg-gradient-to-br from-indigo-100 to-indigo-50 p-4 rounded-lg border-2 border-indigo-200">
+              <p className="text-xs text-slate-600 mb-1 uppercase tracking-wide">Sample Size</p>
+              <p className="text-2xl font-bold text-indigo-700">{sampleSize}</p>
+            </div>
+          </div>
+          <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+            <p className="text-sm text-slate-700">
+              <span className="font-mono bg-green-200 px-2 py-1 rounded">statistics</span> = computed metrics
+            </p>
+            <p className="text-sm text-slate-600 mt-2">
+              <strong>Dependencies:</strong> <span className="font-mono bg-blue-200 px-2 py-1 rounded">raw_data</span> from Cell 2
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Cell 4: Visualization */}
+      <Card className="border-2 border-orange-300 shadow-xl">
+        <CardHeader className="bg-gradient-to-r from-orange-100 to-orange-50">
+          <CardTitle className="flex items-center gap-2">
+            <span className="bg-orange-600 text-white px-3 py-1 rounded font-mono text-sm">Cell 4</span>
+            <span className="text-orange-900">Scatter Plot Visualization</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-6">
           <ResponsiveContainer width="100%" height={350}>
             <ScatterChart margin={{ top: 20, right: 30, bottom: 20, left: 20 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis 
-                dataKey="x" 
-                name="X Variable" 
-                label={{ value: 'X Variable', position: 'insideBottom', offset: -10 }}
-                stroke="#64748b"
-              />
-              <YAxis 
-                dataKey="y" 
-                name="Y Variable" 
-                label={{ value: 'Y Variable', angle: -90, position: 'insideLeft' }}
-                stroke="#64748b"
-              />
-              <Tooltip 
-                cursor={{ strokeDasharray: '3 3' }}
-                contentStyle={{ backgroundColor: '#f8fafc', border: '1px solid #cbd5e1' }}
-              />
+              <XAxis dataKey="x" name="X" stroke="#64748b" />
+              <YAxis dataKey="y" name="Y" stroke="#64748b" />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
               <Legend />
-              <Scatter 
-                name={`Data Points (n=${sampleSize})`} 
-                data={rawData} 
-                fill="#3b82f6" 
-                fillOpacity={0.6}
-              />
+              <Scatter name={`Data Points (n=${sampleSize})`} data={rawData} fill="#f97316" />
             </ScatterChart>
           </ResponsiveContainer>
-          <div className="bg-green-50 border-l-4 border-green-500 p-4 mt-4">
+          <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded mt-4">
             <p className="text-sm text-slate-700">
-              <strong>📍 Variable:</strong> <code className="bg-slate-200 px-2 py-1 rounded font-mono">rawData</code>
+              <span className="font-mono bg-orange-200 px-2 py-1 rounded">plot</span> = scatter visualization
             </p>
             <p className="text-sm text-slate-600 mt-2">
-              <strong>Dependencies:</strong> Depends on <code className="bg-slate-200 px-2 py-1 rounded font-mono">sampleSize</code> from Cell 1
-            </p>
-            <p className="text-sm text-slate-600 mt-1">
-              <strong>Relationship:</strong> <code className="bg-slate-200 px-2 py-1 rounded font-mono">y = 2x + 3 + noise</code>
+              <strong>Dependencies:</strong> <span className="font-mono bg-blue-200 px-2 py-1 rounded">raw_data</span> from Cell 2
             </p>
           </div>
         </CardContent>
       </Card>
 
-      {/* Cell 3: Statistical Summary */}
-      <Card className="border-2 border-purple-200 shadow-lg">
-        <CardHeader className="bg-purple-50">
+      {/* Cell 5: Dynamic Markdown */}
+      <Card className="border-2 border-rose-300 shadow-xl">
+        <CardHeader className="bg-gradient-to-r from-rose-100 to-rose-50">
           <CardTitle className="flex items-center gap-2">
-            <span className="bg-purple-500 text-white px-3 py-1 rounded text-sm font-mono">Cell 3</span>
-            Statistical Summary
+            <span className="bg-rose-600 text-white px-3 py-1 rounded font-mono text-sm">Cell 5</span>
+            <span className="text-rose-900">Dynamic Markdown Report</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-6">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-            <div className="bg-gradient-to-br from-blue-100 to-blue-50 p-4 rounded-lg border border-blue-200">
-              <p className="text-sm text-slate-600 mb-1">Mean X</p>
-              <p className="text-3xl font-bold text-blue-700">{statistics.meanX}</p>
-            </div>
-            <div className="bg-gradient-to-br from-green-100 to-green-50 p-4 rounded-lg border border-green-200">
-              <p className="text-sm text-slate-600 mb-1">Mean Y</p>
-              <p className="text-3xl font-bold text-green-700">{statistics.meanY}</p>
-            </div>
-            <div className="bg-gradient-to-br from-purple-100 to-purple-50 p-4 rounded-lg border border-purple-200">
-              <p className="text-sm text-slate-600 mb-1">Correlation</p>
-              <p className="text-3xl font-bold text-purple-700">{statistics.correlation}</p>
-            </div>
-            <div className="bg-gradient-to-br from-orange-100 to-orange-50 p-4 rounded-lg border border-orange-200">
-              <p className="text-sm text-slate-600 mb-1">Min Y</p>
-              <p className="text-3xl font-bold text-orange-700">{statistics.minY}</p>
-            </div>
-            <div className="bg-gradient-to-br from-red-100 to-red-50 p-4 rounded-lg border border-red-200">
-              <p className="text-sm text-slate-600 mb-1">Max Y</p>
-              <p className="text-3xl font-bold text-red-700">{statistics.maxY}</p>
-            </div>
-            <div className="bg-gradient-to-br from-indigo-100 to-indigo-50 p-4 rounded-lg border border-indigo-200">
-              <p className="text-sm text-slate-600 mb-1">Sample Size</p>
-              <p className="text-3xl font-bold text-indigo-700">{sampleSize}</p>
-            </div>
-          </div>
-          <div className="bg-purple-50 border-l-4 border-purple-500 p-4">
-            <p className="text-sm text-slate-700">
-              <strong>📍 Variable:</strong> <code className="bg-slate-200 px-2 py-1 rounded font-mono">statistics</code>
-            </p>
-            <p className="text-sm text-slate-600 mt-2">
-              <strong>Dependencies:</strong> Depends on <code className="bg-slate-200 px-2 py-1 rounded font-mono">rawData</code> from Cell 2,
-              which depends on <code className="bg-slate-200 px-2 py-1 rounded font-mono">sampleSize</code> from Cell 1
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Cell 4: Dynamic Markdown Output */}
-      <Card className="border-2 border-amber-200 shadow-lg">
-        <CardHeader className="bg-amber-50">
-          <CardTitle className="flex items-center gap-2">
-            <span className="bg-amber-500 text-white px-3 py-1 rounded text-sm font-mono">Cell 4</span>
-            Dynamic Analysis Report
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="pt-6">
-          <div className="bg-white p-6 rounded-lg border-2 border-slate-200">
-            <h3 className="text-2xl font-bold text-slate-800 mb-4">
-              {dynamicContent.sizeCategory}
-            </h3>
+          <div className="bg-white p-6 rounded-lg border-2 border-rose-200">
+            <h2 className="text-2xl font-bold text-slate-800 mb-4">{analysisText.sizeStatus} Analysis Report</h2>
             
-            <p className="text-slate-700 mb-4 leading-relaxed">
-              With <strong className="text-blue-600">{sampleSize} data points</strong>, we observe a{' '}
-              <strong className="text-purple-600">{dynamicContent.corrStrength}</strong> positive 
-              correlation of <strong className="text-green-600">{statistics.correlation}</strong> between 
-              variables X and Y.
+            <h3 className="text-lg font-semibold text-slate-700 mb-2">Summary</h3>
+            <p className="text-slate-700 mb-4">
+              With <strong className="text-rose-600">{sampleSize} data points</strong>, we observe a{' '}
+              <strong className="text-purple-600">{analysisText.corrStrength}</strong> positive correlation of{' '}
+              <strong className="text-green-600">{statistics.correlation}</strong> between X and Y.
             </p>
             
-            <div className={`border-l-4 p-4 mb-4 ${
+            <div className={`border-l-4 p-4 mb-4 rounded ${
               sampleSize < 50 ? 'bg-yellow-50 border-yellow-400' : 'bg-blue-50 border-blue-400'
             }`}>
-              <p className={sampleSize < 50 ? 'text-yellow-800' : 'text-blue-800'}>
-                <strong>📊 Note:</strong> {dynamicContent.sizeAdvice}
+              <p className={`text-sm ${sampleSize < 50 ? 'text-yellow-800' : 'text-blue-800'}`}>
+                💡 <strong>Note:</strong> {analysisText.advice}
               </p>
             </div>
             
-            {parseFloat(statistics.correlation) > 0.8 && (
-              <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
-                <p className="text-green-800">
-                  <strong>✨ Insight:</strong> The high correlation suggests a strong linear 
-                  relationship, consistent with our synthetic model y = 2x + 3.
-                </p>
-              </div>
-            )}
+            <h3 className="text-lg font-semibold text-slate-700 mb-2">Statistical Results</h3>
+            <table className="w-full text-sm mb-4">
+              <thead className="bg-slate-100">
+                <tr>
+                  <th className="px-4 py-2 text-left">Metric</th>
+                  <th className="px-4 py-2 text-left">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-t"><td className="px-4 py-2">Mean X</td><td className="px-4 py-2 font-mono">{statistics.meanX}</td></tr>
+                <tr className="border-t"><td className="px-4 py-2">Mean Y</td><td className="px-4 py-2 font-mono">{statistics.meanY}</td></tr>
+                <tr className="border-t"><td className="px-4 py-2">Correlation</td><td className="px-4 py-2 font-mono">{statistics.correlation}</td></tr>
+                <tr className="border-t"><td className="px-4 py-2">Y Range</td><td className="px-4 py-2 font-mono">{statistics.minY} to {statistics.maxY}</td></tr>
+              </tbody>
+            </table>
             
-            <div className="bg-slate-50 p-4 rounded-lg">
-              <p className="text-slate-700">
-                <strong>Range Analysis:</strong> The Y variable ranges from{' '}
-                <span className="font-mono bg-orange-100 px-2 py-1 rounded">{statistics.minY}</span> to{' '}
-                <span className="font-mono bg-red-100 px-2 py-1 rounded">{statistics.maxY}</span>, 
-                with a mean of <span className="font-mono bg-green-100 px-2 py-1 rounded">{statistics.meanY}</span>.
-              </p>
-            </div>
+            <h3 className="text-lg font-semibold text-slate-700 mb-2">Data Flow</h3>
+            <pre className="bg-slate-100 p-4 rounded text-xs overflow-x-auto">
+{`Cell 1: sample_size (slider)
+        ↓
+Cell 2: raw_data (generated data)
+        ↓
+Cell 3: statistics (computed metrics)
+        ↓
+Cell 4: plot (visualization)
+        ↓
+Cell 5: dynamic_report (YOU ARE HERE)`}
+            </pre>
           </div>
-          
-          <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mt-4">
+          <div className="bg-rose-50 border-l-4 border-rose-500 p-4 rounded mt-4">
             <p className="text-sm text-slate-700">
-              <strong>📍 Variable:</strong> <code className="bg-slate-200 px-2 py-1 rounded font-mono">dynamicContent</code>
+              <span className="font-mono bg-rose-200 px-2 py-1 rounded">dynamic_report</span> = reactive markdown
             </p>
             <p className="text-sm text-slate-600 mt-2">
-              <strong>Dependencies:</strong> This markdown content updates dynamically based on 
-              <code className="bg-slate-200 px-2 py-1 rounded font-mono mx-1">statistics</code> from Cell 3 and 
-              <code className="bg-slate-200 px-2 py-1 rounded font-mono mx-1">sampleSize</code> from Cell 1
+              <strong>Dependencies:</strong>{' '}
+              <span className="font-mono bg-purple-200 px-2 py-1 rounded">sample_size</span> from Cell 1,{' '}
+              <span className="font-mono bg-green-200 px-2 py-1 rounded">statistics</span> from Cell 3
             </p>
           </div>
         </CardContent>
       </Card>
 
-      {/* Data Flow Diagram */}
-      <Card className="border-2 border-slate-300 shadow-lg">
+      {/* Footer with Instructions */}
+      <Card className="border-2 border-slate-300 shadow-xl">
         <CardHeader className="bg-slate-100">
-          <CardTitle className="flex items-center gap-2">
-            📊 Data Flow & Variable Dependencies
-          </CardTitle>
+          <CardTitle>🎯 How Marimo Works</CardTitle>
         </CardHeader>
         <CardContent className="pt-6">
-          <div className="flex flex-col items-center space-y-3">
-            <div className="bg-blue-100 border-2 border-blue-500 rounded-lg p-4 text-center w-64">
-              <strong className="text-blue-800">Cell 1: sampleSize</strong>
-              <br />
-              <span className="text-sm text-slate-600">Interactive Slider Widget</span>
-            </div>
-            <div className="text-3xl text-blue-500">↓</div>
-            <div className="bg-green-100 border-2 border-green-500 rounded-lg p-4 text-center w-64">
-              <strong className="text-green-800">Cell 2: rawData</strong>
-              <br />
-              <span className="text-sm text-slate-600">Generated Dataset (n={sampleSize})</span>
-            </div>
-            <div className="text-3xl text-green-500">↓</div>
-            <div className="bg-purple-100 border-2 border-purple-500 rounded-lg p-4 text-center w-64">
-              <strong className="text-purple-800">Cell 3: statistics</strong>
-              <br />
-              <span className="text-sm text-slate-600">Computed Metrics</span>
-            </div>
-            <div className="text-3xl text-purple-500">↓</div>
-            <div className="bg-amber-100 border-2 border-amber-500 rounded-lg p-4 text-center w-64">
-              <strong className="text-amber-800">Cell 4: dynamicContent</strong>
-              <br />
-              <span className="text-sm text-slate-600">Reactive Markdown Report</span>
-            </div>
-          </div>
-          
-          <div className="mt-6 p-4 bg-slate-50 rounded-lg">
-            <p className="text-sm text-slate-700 font-semibold mb-2">💡 How It Works:</p>
-            <ul className="text-sm text-slate-600 space-y-1 list-disc list-inside">
-              <li>Moving the slider changes <code className="bg-slate-200 px-1 rounded">sampleSize</code></li>
-              <li>This triggers regeneration of <code className="bg-slate-200 px-1 rounded">rawData</code></li>
-              <li>New data triggers recalculation of <code className="bg-slate-200 px-1 rounded">statistics</code></li>
-              <li>Updated statistics trigger refresh of <code className="bg-slate-200 px-1 rounded">dynamicContent</code></li>
-              <li>All updates happen automatically (reactive computation)</li>
-            </ul>
+          <div className="space-y-3 text-sm text-slate-700">
+            <p><strong>✅ Reactive Execution:</strong> Change Cell 1 → All dependent cells update automatically</p>
+            <p><strong>✅ No Out-of-Order:</strong> Cells always run in dependency order (reproducible)</p>
+            <p><strong>✅ Interactive Widgets:</strong> Slider control with real-time updates</p>
+            <p><strong>✅ Dynamic Markdown:</strong> Report adapts to sample size and correlation</p>
+            <p><strong>✅ Clear Documentation:</strong> Each cell shows its dependencies</p>
           </div>
         </CardContent>
       </Card>
@@ -341,4 +310,4 @@ const InteractiveNotebook = () => {
   );
 };
 
-export default InteractiveNotebook;
+export default MarimoNotebook;
