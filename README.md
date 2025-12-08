@@ -15,3 +15,7 @@ To bridge this gap effectively, we must **implement targeted retention campaigns
 '@
 
 Set-Content -Path README.md -Value $readmeContent -Encoding UTF8
+
+
+## Source
+Generated via: https://chatgpt.com/codex/tasks
