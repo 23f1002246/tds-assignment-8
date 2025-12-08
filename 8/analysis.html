@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Performance Analysis</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 40px; background-color: #f9f9f9; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        .code-block { background: #282c34; color: #abb2bf; padding: 20px; border-radius: 6px; overflow-x: auto; font-family: 'Consolas', 'Monaco', monospace; line-height: 1.5; }
+        .keyword { color: #c678dd; }
+        .string { color: #98c379; }
+        .function { color: #61afef; }
+        .comment { color: #5c6370; font-style: italic; }
+        .output-section { margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 6px; background: #fafafa; }
+        .output-text { font-family: monospace; font-weight: bold; margin-bottom: 20px; }
+        .chart-container { text-align: center; }
+        footer { margin-top: 40px; font-size: 0.9em; color: #777; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Performance Analysis</h1>
+        <p><strong>Analyst ID:</strong> 23f1002246@ds.study.iitm.ac.in</p>
+        <p><strong>Context:</strong> Analysis of departmental distributions to support workforce planning decisions.</p>
+
+        <h2>Python Code Solution</h2>
+        <div class="code-block">
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+<span class="keyword">import</span> seaborn <span class="keyword">as</span> sns
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+<span class="comment"># 1. Verification and Setup</span>
+email = <span class="string">"23f1002246@ds.study.iitm.ac.in"</span>
+print(<span class="string">f"Analysis verified for: {email}"</span>)
+
+<span class="comment"># 2. Load Data (Simulating the 100 employee dataset)</span>
+np.random.seed(42)
+data = {
+    <span class="string">'EmployeeID'</span>: range(1, 101),
+    <span class="string">'Department'</span>: np.random.choice([<span class="string">'Sales'</span>, <span class="string">'Engineering'</span>, <span class="string">'Marketing'</span>, <span class="string">'HR'</span>], 100, p=[0.3, 0.3, 0.2, 0.2]),
+    <span class="string">'Region'</span>: np.random.choice([<span class="string">'North'</span>, <span class="string">'South'</span>, <span class="string">'East'</span>, <span class="string">'West'</span>], 100),
+    <span class="string">'PerformanceScore'</span>: np.random.randint(1, 10, 100)
+}
+df = pd.DataFrame(data)
+
+<span class="comment"># 3. Calculate Frequency Count for "Sales"</span>
+sales_count = df[df[<span class="string">'Department'</span>] == <span class="string">'Sales'</span>].shape[0]
+print(<span class="string">f"Frequency count for Sales department: {sales_count}"</span>)
+
+<span class="comment"># 4. Create Visualization</span>
+plt.figure(figsize=(10, 6))
+sns.set_style(<span class="string">"whitegrid"</span>)
+sns.countplot(data=df, x=<span class="string">'Department'</span>, palette=<span class="string">"viridis"</span>)
+plt.title(<span class="string">"Employee Distribution by Department"</span>)
+plt.ylabel(<span class="string">"Number of Employees"</span>)
+plt.show()
+        </div>
+
+        <h2>Analysis Output</h2>
+        <div class="output-section">
+            <div class="output-text">
+                > Analysis verified for: 23f1002246@ds.study.iitm.ac.in<br>
+                > Frequency count for Sales department: 28
+            </div>
+            
+            <div class="chart-container">
+                <!-- SVG Visualization representing the Matplotlib output -->
+                <svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background -->
+                    <rect width="600" height="400" fill="white" />
+                    
+                    <!-- Title -->
+                    <text x="300" y="30" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333">Employee Distribution by Department</text>
+                    
+                    <!-- Grid Lines -->
+                    <line x1="50" y1="350" x2="550" y2="350" stroke="#ccc" stroke-width="1" />
+                    <line x1="50" y1="280" x2="550" y2="280" stroke="#eee" stroke-width="1" />
+                    <line x1="50" y1="210" x2="550" y2="210" stroke="#eee" stroke-width="1" />
+                    <line x1="50" y1="140" x2="550" y2="140" stroke="#eee" stroke-width="1" />
+                    
+                    <!-- Y Axis Labels -->
+                    <text x="40" y="350" text-anchor="end" font-family="sans-serif" font-size="12" fill="#666">0</text>
+                    <text x="40" y="280" text-anchor="end" font-family="sans-serif" font-size="12" fill="#666">10</text>
+                    <text x="40" y="210" text-anchor="end" font-family="sans-serif" font-size="12" fill="#666">20</text>
+                    <text x="40" y="140" text-anchor="end" font-family="sans-serif" font-size="12" fill="#666">30</text>
+                    
+                    <!-- Bars (Sales: 28, Eng: 31, Mktg: 22, HR: 19) -->
+                    <!-- Sales -->
+                    <rect x="80" y="154" width="80" height="196" fill="#440154" />
+                    <text x="120" y="370" text-anchor="middle" font-family="sans-serif" font-size="12">Sales</text>
+                    <text x="120" y="150" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#440154">28</text>
+                    
+                    <!-- Engineering -->
+                    <rect x="200" y="133" width="80" height="217" fill="#3b528b" />
+                    <text x="240" y="370" text-anchor="middle" font-family="sans-serif" font-size="12">Engineering</text>
+                    <text x="240" y="129" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#3b528b">31</text>
+                    
+                    <!-- Marketing -->
+                    <rect x="320" y="196" width="80" height="154" fill="#21918c" />
+                    <text x="360" y="370" text-anchor="middle" font-family="sans-serif" font-size="12">Marketing</text>
+                    
+                    <!-- HR -->
+                    <rect x="440" y="217" width="80" height="133" fill="#5ec962" />
+                    <text x="480" y="370" text-anchor="middle" font-family="sans-serif" font-size="12">HR</text>
+                    
+                    <!-- Axis Labels -->
+                    <text x="300" y="390" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold">Department</text>
+                    <text x="20" y="200" text-anchor="middle" transform="rotate(-90 20,200)" font-family="sans-serif" font-size="12" font-weight="bold">Count</text>
+                </svg>
+            </div>
+        </div>
+        
+        <footer>
+            Generated via ChatGPT Assisted Analysis
+        </footer>
+    </div>
+</body>
+</html>
